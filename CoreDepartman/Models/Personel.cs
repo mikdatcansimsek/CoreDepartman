@@ -9,5 +9,6 @@ namespace CoreDepartman.Models
         public string ad { get; set; }
         public string soyad { get; set; }
         public string sehir { get; set; }
+        public Departmanlar depart { get; set; }
     }
 }

@@ -7,5 +7,6 @@ namespace CoreDepartman.Models
         [Key]
         public int id { get; set; }
         public string departmanAd { get; set; }
+        public List<Personel> personels { get; set; }
     }
 }

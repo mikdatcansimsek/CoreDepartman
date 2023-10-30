@@ -50,6 +50,9 @@ namespace CoreDepartman.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("departid")
+                        .HasColumnType("int");
+
                     b.Property<string>("sehir")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -60,7 +63,25 @@ namespace CoreDepartman.Migrations
 
                     b.HasKey("perId");
 
+                    b.HasIndex("departid");
+
                     b.ToTable("personels");
+                });
+
+            modelBuilder.Entity("CoreDepartman.Models.Personel", b =>
+                {
+                    b.HasOne("CoreDepartman.Models.Departmanlar", "depart")
+                        .WithMany("personels")
+                        .HasForeignKey("departid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("depart");
+                });
+
+            modelBuilder.Entity("CoreDepartman.Models.Departmanlar", b =>
+                {
+                    b.Navigation("personels");
                 });
 #pragma warning restore 612, 618
         }
